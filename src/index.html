@@ -2,12 +2,6 @@
 <html lang="en">
 	<head>
 		<title>boilerplate</title>
-		<% if (htmlWebpackPlugin.options.trackJSToken) { %>
-		<!-- BEGIN TRACKJS -->
-		<script type="text/javascript">window._trackJs = { token: '<%= htmlWebpackPlugin.options.trackJSToken %>' };</script>
-		<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
-		<!-- END TRACKJS -->
-		<% } %>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -25,5 +19,11 @@
 
 			</tbody>
 		</table>
+		<% if (htmlWebpackPlugin.options.trackJSToken) { %>
+			<!-- BEGIN TRACKJS -->
+			<script async type="text/javascript">window._trackJs = { token: '<%= htmlWebpackPlugin.options.trackJSToken %>' };</script>
+			<script async type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+			<!-- END TRACKJS -->
+		<% } %>
 	</body>
 </html>
