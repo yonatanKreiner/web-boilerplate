@@ -2,9 +2,7 @@ import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
-	debug: true,
 	devtool: 'inline-source-map',
-	noInfo: false,
 	entry: [
 		path.resolve(__dirname, 'src/index')
 	],
@@ -18,13 +16,17 @@ export default {
 		// Create HTML file that includes reference to bundle.js
 		new HtmlWebpackPlugin({
 			template: 'src/index.html',
-			inject: true
+			inject: true,
+			debug: true,
+			options: {
+				noInfo: true
+			}
 		})
 	],
 	module: {
-		loaders: [
-			{test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
-			{test: /\.css$/, loaders: ['style', 'css']}
+		rules: [
+			{test: /\.jsx?$/, exclude: /node_modules/, use: ['babel-loader']},
+			{test: /\.css$/, use: ['style-loader', 'css-loader']}
 		]
 	}
 }
